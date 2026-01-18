@@ -61,17 +61,23 @@
     @media(max-width:860px){
       .hero{grid-template-columns:1fr;}
     }
-
-    .poster{
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid var(--stroke);
-      background: rgba(0,0,0,.35);
-    }
-    .poster img{
-      width:100%;height:auto;display:block;
-    }
-
+   .poster{
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(0,180,255,.45);
+  background: radial-gradient(circle at top, rgba(0,180,255,.15), rgba(0,0,0,.6));
+  box-shadow: 0 0 40px rgba(0,180,255,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+ .poster img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
     .info h1{
       font-size:34px;line-height:1.1;margin-bottom:8px;
       text-transform:uppercase;
