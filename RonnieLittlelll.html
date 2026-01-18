@@ -221,14 +221,39 @@
   </div>
 
   <script>
-    // Replace these with YOUR real links (YouTube/Hudl/Drive)
-    const LINKS = {
-      points:   { title: "Points Highlights (15 PPG)", url: "https://example.com/points" },
-      rebounds: { title: "Rebounds Highlights",         url: "https://example.com/rebounds" },
-      assists:  { title: "Assists Highlights",          url: "https://example.com/assists" },
-      blocks:   { title: "Blocks Highlights",           url: "https://example.com/blocks" },
-      fullgame: { title: "Full Game Film",              url: "https://example.com/fullgame" }
-    };
+  const VIDEO_MAP = {
+  points: "points.mp4",
+  rebounds: "rebounds.mp4",
+  assists: "assists.mp4",
+  blocks: "blocks.mp4",
+  fullgame: "fullgame.mp4"
+};
+
+function setActive(tabKey) {
+  document.querySelectorAll(".tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.tab === tabKey)
+  );
+
+  if (tabKey === "bio") {
+    panel.innerHTML = `
+      <h2>About Ronnie</h2>
+      <p>
+        I’m Ronnie Little III from Charlotte, North Carolina. I play basketball because it pushes me to be disciplined,
+        competitive, and a leader. I take pride in effort, defense, and making my teammates better.
+      </p>
+    `;
+    return;
+  }
+
+  panel.innerHTML = `
+    <h2>${tabKey.toUpperCase()} HIGHLIGHTS</h2>
+    <video controls playsinline preload="metadata"
+      style="width:100%; border-radius:14px; margin-top:10px;">
+      <source src="./${VIDEO_MAP[tabKey]}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  `;
+} 
 
     const panel = document.getElementById("panel");
     const tabs = document.querySelectorAll(".tab");
