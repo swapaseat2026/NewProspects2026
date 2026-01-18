@@ -220,21 +220,22 @@
     <footer>© New Prospects • Recruiting Profile</footer>
   </div>
 
-  <script>
-  const VIDEO_MAP = {
-  points: "points.mp4",
-  rebounds: "rebounds.mp4",
-  assists: "assists.mp4",
-  blocks: "blocks.mp4",
-  fullgame: "fullgame.mp4"
+<script>
+const VIDEO_MAP = {
+  points:   "https://www.youtube.com/embed/POINTS_VIDEO_ID",
+  rebounds: "https://www.youtube.com/embed/REBOUNDS_VIDEO_ID",
+  assists:  "https://www.youtube.com/embed/ASSISTS_VIDEO_ID",
+  blocks:   "https://www.youtube.com/embed/BLOCKS_VIDEO_ID",
+  fullgame: "https://www.youtube.com/embed/FULLGAME_VIDEO_ID"
 };
 
-function setActive(tabKey) {
-  document.querySelectorAll(".tab").forEach(t =>
-    t.classList.toggle("active", t.dataset.tab === tabKey)
-  );
+const panel = document.getElementById("panel");
+const tabs = document.querySelectorAll(".tab");
 
-  if (tabKey === "bio") {
+function setActive(tabKey){
+  tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === tabKey));
+
+  if(tabKey === "bio"){
     panel.innerHTML = `
       <h2>About Ronnie</h2>
       <p>
@@ -247,47 +248,19 @@ function setActive(tabKey) {
 
   panel.innerHTML = `
     <h2>${tabKey.toUpperCase()} HIGHLIGHTS</h2>
-    <video controls playsinline preload="metadata"
-      style="width:100%; border-radius:14px; margin-top:10px;">
-      <source src="./${VIDEO_MAP[tabKey]}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <div style="position:relative; padding-top:56.25%; margin-top:10px;">
+      <iframe 
+        src="${VIDEO_MAP[tabKey]}"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:14px;">
+      </iframe>
+    </div>
   `;
-} 
+}
 
-    const panel = document.getElementById("panel");
-    const tabs = document.querySelectorAll(".tab");
-
-    function setActive(tabKey){
-      tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === tabKey));
-
-      if(tabKey === "bio"){
-        panel.innerHTML = `
-          <h2>About Ronnie</h2>
-          <p>
-            I’m Ronnie Little III from Charlotte, North Carolina. I play basketball because it pushes me to be disciplined,
-            competitive, and a leader. I take pride in effort, defense, and making my teammates better.
-          </p>
-          <div class="btns">
-            <a class="btn" href="#" target="_blank" rel="noopener">🎥 Player Intro (optional)</a>
-            <a class="btn alt" href="#" target="_blank" rel="noopener">📩 Contact / Coach Info</a>
-          </div>
-        `;
-        return;
-      }
-
-      const item = LINKS[tabKey];
-      panel.innerHTML = `
-        <h2>${item.title}</h2>
-        <p>Tap the button below to watch curated clips for this stat category.</p>
-        <div class="btns">
-          <a class="btn" href="${item.url}" target="_blank" rel="noopener">▶️ Watch Now</a>
-          <a class="btn alt" href="${LINKS.fullgame.url}" target="_blank" rel="noopener">📽 Full Game Film</a>
-        </div>
-      `;
-    }
-
-    tabs.forEach(t => t.addEventListener("click", () => setActive(t.dataset.tab)));
-  </script>
+tabs.forEach(t => t.addEventListener("click", () => setActive(t.dataset.tab)));
+</script>
 </body>
 </html>
