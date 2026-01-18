@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Prospects | Ronnie Little III</title>
+  <style>
+    :root{
+      --bg:#05070A;
+      --card:#0d1320;
+      --text:#eaf2ff;
+      --muted:#a9b6d3;
+      --accent:#00B4FF;
+      --accent2:#7B2FF7;
+      --stroke:rgba(255,255,255,.12);
+      --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial, Helvetica, sans-serif;}
+    body{
+      background: radial-gradient(circle at top, rgba(123,47,247,.35), transparent 55%),
+                  radial-gradient(circle at bottom, rgba(0,180,255,.25), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      padding:22px;
+    }
+    .wrap{max-width:980px;margin:0 auto;}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;margin-bottom:16px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:900;letter-spacing:.5px;
+    }
+    .brand .dot{
+      width:12px;height:12px;border-radius:50%;
+      background: linear-gradient(45deg,var(--accent),var(--accent2));
+      box-shadow:0 0 18px rgba(0,180,255,.45);
+    }
+    .pill{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      padding:9px 12px;border-radius:999px;
+      color:var(--muted);font-size:13px;
+    }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap:18px;
+    }
+    @media(max-width:860px){
+      .hero{grid-template-columns:1fr;}
+    }
+
+    .poster{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.35);
+    }
+    .poster img{
+      width:100%;height:auto;display:block;
+    }
+
+    .info h1{
+      font-size:34px;line-height:1.1;margin-bottom:8px;
+      text-transform:uppercase;
+    }
+    .info .sub{
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .meta{
+      display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;
+    }
+    .chip{
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.28);
+      padding:8px 10px;border-radius:999px;
+      font-size:13px;color:var(--text);
+    }
+
+    .tabs{
+      margin-top:14px;
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    .tab{
+      cursor:pointer;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      padding:10px 12px;border-radius:999px;
+      color:var(--text);
+      font-weight:700;font-size:13px;
+      transition:.18s;
+      user-select:none;
+    }
+    .tab:hover{transform:translateY(-1px);border-color:rgba(0,180,255,.35);}
+    .tab.active{
+      background: linear-gradient(45deg, rgba(0,180,255,.22), rgba(123,47,247,.18));
+      border-color:rgba(0,180,255,.5);
+      box-shadow:0 0 22px rgba(0,180,255,.18);
+    }
+
+    .panel{
+      margin-top:14px;
+      border:1px solid var(--stroke);
+      border-radius:16px;
+      background: rgba(0,0,0,.25);
+      padding:14px;
+    }
+    .panel h2{font-size:18px;margin-bottom:8px;}
+    .panel p{color:var(--muted);line-height:1.55;margin-bottom:10px;}
+
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 14px;border-radius:12px;
+      text-decoration:none;font-weight:800;
+      border:1px solid rgba(0,180,255,.35);
+      background: rgba(0,180,255,.16);
+      color:var(--text);
+      transition:.18s;
+    }
+    .btn:hover{transform:translateY(-1px);background: rgba(0,180,255,.22);}
+    .btn.alt{
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+    }
+
+    .statsRow{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+    @media(max-width:860px){.statsRow{grid-template-columns:repeat(2,1fr);}}
+    .statBox{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:12px;
+    }
+    .statBox .k{font-size:12px;color:var(--muted);margin-bottom:6px;}
+    .statBox .v{font-size:20px;font-weight:900;}
+    footer{margin-top:16px;color:rgba(255,255,255,.35);font-size:12px;text-align:center;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span> NEW PROSPECTS</div>
+      <div class="pill">Share: newprospects.com/RonnieLittlelll</div>
+    </div>
+
+    <div class="card">
+      <div class="hero">
+        <!-- CARD IMAGE -->
+        <div class="poster">
+          <!-- Replace this src with your card image file path or hosted URL -->
+          <img src="card.png" alt="Ronnie Little III Card">
+        </div>
+
+        <!-- PLAYER INFO -->
+        <div class="info">
+          <h1>RONNIE LITTLE III</h1>
+          <div class="sub">Player Profile • Tap tabs to watch film by stat</div>
+
+          <div class="meta">
+            <div class="chip">Height: 6'5"</div>
+            <div class="chip">Weight: 200 lbs</div>
+            <div class="chip">From: Charlotte, NC</div>
+            <div class="chip">Team: Warriors Elite Basketball</div>
+          </div>
+
+          <div class="statsRow">
+            <div class="statBox"><div class="k">POINTS PER GAME</div><div class="v">15.0</div></div>
+            <div class="statBox"><div class="k">REBOUNDS PER GAME</div><div class="v">8.0</div></div>
+            <div class="statBox"><div class="k">ASSISTS PER GAME</div><div class="v">8.1</div></div>
+            <div class="statBox"><div class="k">BLOCKS PER GAME</div><div class="v">2.0</div></div>
+          </div>
+
+          <!-- TABS -->
+          <div class="tabs" id="tabs">
+            <div class="tab active" data-tab="bio">RONNIE LITTLE III</div>
+            <div class="tab" data-tab="points">POINTS</div>
+            <div class="tab" data-tab="rebounds">REBOUNDS</div>
+            <div class="tab" data-tab="assists">ASSISTS</div>
+            <div class="tab" data-tab="blocks">BLOCKS</div>
+            <div class="tab" data-tab="fullgame">FULL GAME</div>
+          </div>
+
+          <!-- PANEL -->
+          <div class="panel" id="panel">
+            <h2>About Ronnie</h2>
+            <p>
+              I’m Ronnie Little III from Charlotte, North Carolina. I play basketball because it pushes me to be disciplined,
+              competitive, and a leader. I take pride in effort, defense, and making my teammates better.
+            </p>
+            <div class="btns">
+              <!-- Replace # with your real link -->
+              <a class="btn" href="#" target="_blank" rel="noopener">🎥 Player Intro (optional)</a>
+              <a class="btn alt" href="#" target="_blank" rel="noopener">📩 Contact / Coach Info</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer>© New Prospects • Recruiting Profile</footer>
+  </div>
+
+  <script>
+    // Replace these with YOUR real links (YouTube/Hudl/Drive)
+    const LINKS = {
+      points:   { title: "Points Highlights (15 PPG)", url: "https://example.com/points" },
+      rebounds: { title: "Rebounds Highlights",         url: "https://example.com/rebounds" },
+      assists:  { title: "Assists Highlights",          url: "https://example.com/assists" },
+      blocks:   { title: "Blocks Highlights",           url: "https://example.com/blocks" },
+      fullgame: { title: "Full Game Film",              url: "https://example.com/fullgame" }
+    };
+
+    const panel = document.getElementById("panel");
+    const tabs = document.querySelectorAll(".tab");
+
+    function setActive(tabKey){
+      tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === tabKey));
+
+      if(tabKey === "bio"){
+        panel.innerHTML = `
+          <h2>About Ronnie</h2>
+          <p>
+            I’m Ronnie Little III from Charlotte, North Carolina. I play basketball because it pushes me to be disciplined,
+            competitive, and a leader. I take pride in effort, defense, and making my teammates better.
+          </p>
+          <div class="btns">
+            <a class="btn" href="#" target="_blank" rel="noopener">🎥 Player Intro (optional)</a>
+            <a class="btn alt" href="#" target="_blank" rel="noopener">📩 Contact / Coach Info</a>
+          </div>
+        `;
+        return;
+      }
+
+      const item = LINKS[tabKey];
+      panel.innerHTML = `
+        <h2>${item.title}</h2>
+        <p>Tap the button below to watch curated clips for this stat category.</p>
+        <div class="btns">
+          <a class="btn" href="${item.url}" target="_blank" rel="noopener">▶️ Watch Now</a>
+          <a class="btn alt" href="${LINKS.fullgame.url}" target="_blank" rel="noopener">📽 Full Game Film</a>
+        </div>
+      `;
+    }
+
+    tabs.forEach(t => t.addEventListener("click", () => setActive(t.dataset.tab)));
+  </script>
+</body>
+</html>
